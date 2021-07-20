@@ -1,2 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
 
+body {
+  background: #202020;
+  font-family: "Montserrat", sans-serif;
+}
+
+.todo-list {
+  list-style: none;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding-bottom: 5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.todo-list .todo-item {
+  width: 70%;
+  padding: 1em 2em;
+  background: #313131;
+  border-radius: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #e0e0e0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1em;
+}
+.todo-list .todo-item .left-operation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.todo-list .todo-item .left-operation .status {
+  font-size: 2rem;
+  margin-right: 0.5em;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+.todo-list .todo-item .left-operation .status::after {
+  content: "";
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-radius: 50%;
+  background: #ffffff20;
+  -webkit-transition: height 100ms ease-in-out, width 100ms ease-in-out;
+  transition: height 100ms ease-in-out, width 100ms ease-in-out;
+}
+.todo-list .todo-item .left-operation .status:hover::after {
+  height: 12px;
+  width: 12px;
+}
+.todo-list .todo-item .right-operation i {
+  color: #bfbfbf;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.todo-list .todo-item .right-operation i.delete {
+  margin-left: 0.6em;
+}
+
+.add-task {
+  position: absolute;
+  right: 10%;
+  top: 10%;
+  color: #f7f7f7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.add-task .input-wrapper {
+  overflow: hidden;
+  height: 2rem;
+}
+.add-task .input-wrapper .todo-input {
+  height: 100%;
+  font-family: "cascadia code";
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  padding: 0 25px;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.add-task .add-task-btn {
+  font-size: 1.3rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  border: 1px solid #bfbfbf;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  z-index: 2;
+  background: #202020;
+  -webkit-transition: -webkit-transform 100ms ease-in-out;
+  transition: -webkit-transform 100ms ease-in-out;
+  transition: transform 100ms ease-in-out;
+  transition: transform 100ms ease-in-out, -webkit-transform 100ms ease-in-out;
+}
+.add-task.show-input .input-wrapper {
+  overflow: visible;
+}
+.add-task.show-input .input-wrapper .todo-input {
+  -webkit-transform: translateX(8%);
+          transform: translateX(8%);
+}
 /*# sourceMappingURL=main.css.map */
