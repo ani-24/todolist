@@ -57,6 +57,20 @@ body {
           }
         }
       }
+      .task {
+        position: relative;
+        transition: 250ms ease-in-out;
+        &::before {
+          content: "";
+          position: absolute;
+          height: 1px;
+          width: 0%;
+          background: #e0e0e0;
+          top: 50%;
+          transition: width 250ms ease-in;
+          right: 0;
+        }
+      }
     }
     .right-operation {
       i {
@@ -65,6 +79,15 @@ body {
         cursor: pointer;
         &.delete {
           margin-left: .6em;
+        }
+      }
+    }
+    &.done {
+      .task {
+        color: #e0e0e070;
+        &::before {
+          left: 0;
+          width: 100%;
         }
       }
     }

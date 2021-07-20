@@ -82,6 +82,22 @@ body {
   height: 12px;
   width: 12px;
 }
+.todo-list .todo-item .left-operation .task {
+  position: relative;
+  -webkit-transition: 250ms ease-in-out;
+  transition: 250ms ease-in-out;
+}
+.todo-list .todo-item .left-operation .task::before {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 0%;
+  background: #e0e0e0;
+  top: 50%;
+  -webkit-transition: width 250ms ease-in;
+  transition: width 250ms ease-in;
+  right: 0;
+}
 .todo-list .todo-item .right-operation i {
   color: #bfbfbf;
   font-size: 1.2rem;
@@ -89,6 +105,13 @@ body {
 }
 .todo-list .todo-item .right-operation i.delete {
   margin-left: 0.6em;
+}
+.todo-list .todo-item.done .task {
+  color: #e0e0e070;
+}
+.todo-list .todo-item.done .task::before {
+  left: 0;
+  width: 100%;
 }
 
 .add-task {

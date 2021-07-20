@@ -4,6 +4,19 @@ const addInput = document.querySelector(".todo-input");
 
 const todoList = document.querySelector(".todo-list");
 
+const changeStatus = target => {
+  const task = target.parentElement.parentElement;
+  if (target.classList.contains("fa-circle")) {
+    target.classList.remove("fa-circle");
+    target.classList.add("fa-dot-circle");
+    task.classList.add("done");
+  } else {
+    target.classList.add("fa-circle");
+    target.classList.remove("fa-dot-circle");
+    task.classList.remove("done");
+  }
+}
+
 const showTask = () => {
   let storedTask = localStorage.getItem("task");
   if (storedTask) {
@@ -64,6 +77,13 @@ addBtn.addEventListener("click", () => {
   }
 });
 
+todoList.addEventListener("click", e => {
+  console.log(e.target);
+  if (e.target.classList.contains("status")) {
+    changeStatus(e.target);
+  }
+})
+
 addInput.addEventListener("keyup", key => {
   if (key.keyCode == 13) {
     addToList(addInput.value);
@@ -75,4 +95,4 @@ addInput.addEventListener("keyup", key => {
 
 document.addEventListener("DOMContentLoaded", () => {
   showTask();
-})
+});
