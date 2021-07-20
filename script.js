@@ -4,6 +4,27 @@ const addInput = document.querySelector(".todo-input");
 
 const todoList = document.querySelector(".todo-list");
 
+const showTask = () => {
+  let storedTask = localStorage.getItem("task");
+  if (storedTask) {
+    storedTask = JSON.parse(storedTask);
+    storedTask.forEach(task => {
+      const item = document.createElement("li");
+      item.classList.add("todo-item");
+      item.innerHTML = `
+        <div class="left-operation">
+          <i class="far fa-circle status"></i>
+          <p class="task">${task}</p>
+        </div>
+        <div class="right-operation">
+          <i class="far fa-edit edit"></i>
+          <i class="far fa-trash-alt delete"></i>
+        </div>
+      `
+      todoList.appendChild(item);
+    })
+  }
+}
 
 const addToList = (task) => {
   if (task !== "") {
@@ -17,18 +38,17 @@ const addToList = (task) => {
       storedTask.push(task);
       localStorage.setItem("task", JSON.stringify(storedTask));
     }
-    console.log(localStorage.getItem("task"));
     const item = document.createElement("li");
     item.classList.add("todo-item");
     item.innerHTML = `
-    <div class="left-operation">
-    <i class="far fa-circle status"></i>
-    <p class="task">${task}</p>
-    </div>
-    <div class="right-operation">
-    <i class="far fa-edit edit"></i>
-    <i class="far fa-trash-alt delete"></i>
-    </div>
+      <div class="left-operation">
+        <i class="far fa-circle status"></i>
+        <p class="task">${task}</p>
+      </div>
+      <div class="right-operation">
+        <i class="far fa-edit edit"></i>
+        <i class="far fa-trash-alt delete"></i>
+      </div>
     `
     todoList.appendChild(item);
   }
@@ -52,3 +72,7 @@ addInput.addEventListener("keyup", key => {
   }
 })
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  showTask();
+})
