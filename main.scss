@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -30,12 +32,18 @@ body {
     color: #e0e0e0;
     align-items: center;
     margin-top: 1em;
+    &.remove-animation {
+      transition: all 1s ease-in-out;
+      transform: scale(1.1);
+      opacity: 0;
+    }
     .left-operation {
       display: flex;
       align-items: center;
+      max-width: 90%;
       .status {
         font-size: 2rem;
-        margin-right: .5em;
+        margin-right: 0.5em;
         position: relative;
         display: flex;
         justify-content: center;
@@ -78,7 +86,7 @@ body {
         font-size: 1.2rem;
         cursor: pointer;
         &.delete {
-          margin-left: .6em;
+          margin-left: 0.6em;
         }
       }
     }

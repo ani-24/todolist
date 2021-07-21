@@ -21,6 +21,25 @@ const changeStatus = (target) => {
   localStorage.setItem("task-status", JSON.stringify(taskStatus));
 };
 
+const removeItem = (target) => {
+  let task = target.parentElement.parentElement;
+  let storedTask = JSON.parse(localStorage.getItem("task"));
+  let taskStatus = JSON.parse(localStorage.getItem("task-status"));
+  storedTask.forEach((item, idx) => {
+    if (item === task.querySelector(".task").textContent) {
+      storedTask.splice(idx, 1);
+      taskStatus.splice(idx, 1);
+      console.log(storedTask, taskStatus);
+    }
+  });
+  task.classList.add("remove-animation");
+  task.addEventListener("transitionend", () => {
+    todoList.removeChild(task);
+  });
+  localStorage.setItem("task-status", JSON.stringify(taskStatus));
+  localStorage.setItem("task", JSON.stringify(storedTask));
+};
+
 const showTask = () => {
   let storedTask = localStorage.getItem("task");
   let taskStatus = localStorage.getItem("task-status");
@@ -101,6 +120,8 @@ addBtn.addEventListener("click", () => {
 todoList.addEventListener("click", (e) => {
   if (e.target.classList.contains("status")) {
     changeStatus(e.target);
+  } else if (e.target.classList.contains("delete")) {
+    removeItem(e.target);
   }
 });
 
